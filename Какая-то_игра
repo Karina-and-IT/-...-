@@ -1,0 +1,31 @@
+import random
+from random import *
+print('Добро пожаловать в "Числовую угадайку"!')
+def igra():
+    global counter
+    counter = 0
+    ch = randint(1, 100)
+    for _ in range(100):
+        number = input('Введите число от 1 до 100...')
+        if int(number) < ch:
+            print('Ваше число меньше загаданного, попробуйте ещё разок.')
+            counter += 1
+        elif int(number) > ch:
+            print('Ваше число больше загаданного, попробуйте ещё разок.')
+            counter += 1
+        elif int(number) == ch:
+            print('Вы угадали!')
+            counter += 1
+            print('Количество попыток:', counter, end = '.')
+            print('Вы хотите продолжить игру?')
+            break
+def prodolzhit_igru():
+    while 1:
+        otvet = input().lower()
+        if otvet == 'да':
+            igra()
+        else:
+            break
+igra()
+prodolzhit_igru()
+print('Вы хороший игрок! До скорой встречи!')
