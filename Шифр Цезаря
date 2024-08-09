@@ -1,0 +1,59 @@
+print('Добро пожаловать в "Шифр Цезаря"!')
+eng_lower_alphabet = 'abcdefghijklmnopqrstuvwxyz'
+eng_upper_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+rus_lower_alphabet = 'абвгдежзийклмнопрстуфхцчшщъыьэюя'
+rus_upper_alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+def voprosy():
+    global lang
+    lang = input('Выберите язык программы (ру/ан)...')
+    global c
+    c = input('Что будем производить? (шифр/дешифр)...')
+    global shag_sdviga
+    shag_sdviga = int(input('Введите шаг сдвига...'))
+def shifr():
+    if lang.lower() == 'ру' and c.lower() == 'шифр':
+        text = input('Введите текст...')
+        encrypted_text = ''
+        for i in range(len(text)):
+            if text[i] in rus_lower_alphabet:
+                ii = rus_lower_alphabet.find(text[i])
+                encrypted_text += rus_lower_alphabet[(ii + shag_sdviga) % len(rus_lower_alphabet)]
+            elif text[i] in rus_upper_alphabet:
+                ii = rus_upper_alphabet.find(text[i])
+                encrypted_text += rus_upper_alphabet[(ii + shag_sdviga) % len(rus_upper_alphabet)]
+    elif lang.lower() == 'ру' and c.lower() == 'дешифр':
+        text = input('Введите текст...')
+        decoded_text = ''
+        for i in range(len(text)):
+            if text[i] in rus_lower_alphabet:
+                ii = rus_lower_alphabet.find(text[i])
+                decoded_text += rus_lower_alphabet[(ii - shag_sdviga) % len(rus_lower_alphabet)]
+            elif text[i] in rus_upper_alphabet:
+                ii = rus_upper_alphabet.find(text[i])
+                decoded_text += rus_upper_alphabet[(ii - shag_sdviga) % len(rus_upper_alphabet)]
+    elif lang.lower() == 'ан' and c.lower() == 'шифр':
+        text = input('Введите текст...')
+        encrypted_text = ''
+        for i in range(len(text)):
+            if text[i] in eng_lower_alphabet:
+                ii = eng_lower_alphabet.find(text[i])
+                encrypted_text += eng_lower_alphabet[(ii + shag_sdviga) % len(eng_lower_alphabet)]
+            elif text[i] in eng_upper_alphabet:
+                ii = eng_upper_alphabet.find(text[i])
+                encrypted_text += eng_upper_alphabet[(ii + shag_sdviga) % len(eng_upper_alphabet)]
+    elif lang.lower() == 'ан' and c.lower() == 'дешифр':
+        text = input('Введите текст...')
+        decoded_text = ''
+        for i in range(len(text)):
+            if text[i] in eng_lower_alphabet:
+                ii = eng_lower_alphabet.find(text[i])
+                decoded_text += eng_lower_alphabet[(ii - shag_sdviga) % len(eng_lower_alphabet)]
+            elif text[i] in eng_upper_alphabet:
+                ii = eng_upper_alphabet.find(text[i])
+                decoded_text += eng_upper_alphabet[(ii - shag_sdviga) % len(eng_upper_alphabet)]
+    if c.lower() == 'шифр':
+        return encrypted_text
+    else:
+        return decoded_text
+voprosy()
+print(shifr())
