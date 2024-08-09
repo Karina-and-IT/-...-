@@ -1,0 +1,24 @@
+import random
+from random import *
+import time
+from time import *
+symbols = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!', '#', '$', '%', '&', '*', '+', '-', '=', '?', '@', '^', '_']
+def voprosy():
+    global cnt_paroles
+    cnt_paroles = int(input('Введите количество паролей...'))
+    global len_parole
+    len_parole = int(input('Введите длину одного пароля...'))
+def generation():
+    for _ in range(1, cnt_paroles + 1):
+        parole = []
+        parole += sample(symbols, len_parole)
+        print(*parole, sep = '')
+        sleep(1)
+voprosy()
+print('Генерирую безопасные пароли...')
+sleep(5)
+print('Пароли успешно сгенерированы!')
+sleep(1)
+print('Список ваших паролей:')
+sleep(1)
+generation()
